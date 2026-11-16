@@ -1,8 +1,8 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8"><style>html,body{margin:0;background:#000;color:#fff;font:14px monospace}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:10px;color:#aaa}</style></head><body><script>
 function q(k){return new URLSearchParams(location.search).get(k)}
 function pre(t){var s=document.createElement('pre');s.textContent=t;document.body.appendChild(s)}
-function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
-function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function get(k){try{return sessionStorage.getItem(k)}catch(e){return null}}
+function set(k,v){try{sessionStorage.setItem(k,v)}catch(e){}}
 var m={gh:'https://cdn.jsdelivr.net/gh/',gl:'https://cdn.jsdelivr.net/gl/',npm:'https://cdn.jsdelivr.net/npm/',wp:'https://cdn.jsdelivr.net/wp/',hf:'https://cdn.jsdelivr.net/hf/',cb:'https://codeberg.org/'},n=0;
 function cdn(u){n++;var c=get('c'+u);
 if(c){pre(c);return}
@@ -33,4 +33,4 @@ if(b[0]==4&&!o++){ws.close();var t=r.split('\r\n\r\n')[1];set('c'+h,t);pre(t)}
 ws.onclose=ws.onerror=function(){if(++f==L.length&&!o)fb()};
 }
 if(h){var hc=get('c'+h);if(hc)pre(hc);else L.forEach(function(u){go(new WebSocket(u))})}else if(!n)document.write('cdn not specified');
-</script></body></html>
+</script></body></html> 
