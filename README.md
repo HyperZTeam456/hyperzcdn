@@ -1,6 +1,6 @@
 # HyperZCDN v2
 
-A unblockable CDN that works on anything pretty much.
+A unblockable CDN(kind of) that works on anything pretty much.
 
 ## Credits
 
