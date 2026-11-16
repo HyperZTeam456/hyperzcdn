@@ -1,4 +1,3 @@
-
 <svg xmlns="http://www.w3.org/2000/svg"
      xmlns:xhtml="http://www.w3.org/1999/xhtml"
      width="100%" height="100%"
@@ -8,31 +7,23 @@
     <xhtml:iframe
       xmlns:xhtml="http://www.w3.org/1999/xhtml"
       style="width:100%;height:100%;border:0;display:block"
-      srcdoc="&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;UTF-8&quot;&gt;
-&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
-&lt;style&gt;
-html,body{margin:0;width:100%;height:100%;background:#000;color:white;font:14px monospace;overflow:auto}
-pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:10px;color:#aaa}
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;script&gt;
+      srcdoc="&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;style&gt;html,body{margin:0;background:#000;color:#fff;font:14px monospace}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:10px;color:#aaa}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;
 function q(k){return new URLSearchParams(location.search).get(k)}
+function pre(t){var s=document.createElement('pre');s.textContent=t;document.body.appendChild(s)}
+function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 var m={gh:'https://cdn.jsdelivr.net/gh/',gl:'https://cdn.jsdelivr.net/gl/',npm:'https://cdn.jsdelivr.net/npm/',wp:'https://cdn.jsdelivr.net/wp/',hf:'https://cdn.jsdelivr.net/hf/',cb:'https://codeberg.org/'},n=0;
-function cdn(u){n++;fetch(u).then(function(r){return r.text()}).then(function(t){
-var s=document.createElement('pre');s.textContent=t;document.body.appendChild(s)
-}).catch(function(){n--;if(!n&&!q('h'))document.write('cdn not specified')})}
-for(var k in m)if(k!='cb'&&q(k))cdn(m[k]+q(k));
+function cdn(u){n++;var c=get('c'+u);
+if(c){pre(c);return}
+fetch(u).then(function(r){return r.text()}).then(function(t){set('c'+u,t);pre(t)}).catch(function(){n--;if(!n&amp;&amp;!q('h'))document.write('cdn not specified')})}
+for(var k in m)if(k!='cb'&amp;&amp;q(k))cdn(m[k]+q(k));
 var cb=q('cb');
-if(cb){var a=cb.split('@'),b=a[1]||'main',f=a[0].split('/');cdn(m.cb+f[0]+'/'+f[1]+'/raw/branch/'+b+'/'+f.slice(2).join('/'))}
+if(cb){var a=cb.split('@'),b=a[1]||'main',v=a[0].split('/');cdn(m.cb+v[0]+'/'+v[1]+'/raw/branch/'+b+'/'+v.slice(2).join('/'))}
 var h=q('h'),w32=function(a,v){a[1]=v&amp;255;a[2]=(v&gt;&gt;8)&amp;255;a[3]=(v&gt;&gt;16)&amp;255;a[4]=(v&gt;&gt;24)&amp;255},o=0,f=0,L=q('ws')?q('ws').split(','):['wss://wisp.mercurywork.shop/','wss://itcode.vip/api/'],S=['stun:stun.l.google.com:19302','stun:stun1.l.google.com:19302','stun:stun2.l.google.com:19302','stun:stun3.l.google.com:19302','stun:stun4.l.google.com:19302','stun:stun.cloudflare.com:3478'];
 function fb(){
 var p=new RTCPeerConnection({iceServers:[{urls:S}]}),t='';
 p.createDataChannel('x');
-p.onicecandidate=function(e){if(e.candidate)t+=e.candidate.candidate+'\n';else{var s=document.createElement('pre');s.textContent=t;document.body.appendChild(s)}};
+p.onicecandidate=function(e){if(e.candidate)t+=e.candidate.candidate+'\n';else pre(t)};
 p.createOffer().then(function(d){p.setLocalDescription(d)});
 }
 function go(ws){var r='';
@@ -45,14 +36,13 @@ d[0]=2;w32(d,1);d.set(req,5);ws.send(d);
 ws.onmessage=function(e){
 var b=new Uint8Array(e.data);
 if(b[0]==2)r+=new TextDecoder().decode(b.slice(5));
-if(b[0]==4&amp;&amp;!o++){ws.close();var s=document.createElement('pre');s.textContent=r.split('\r\n\r\n')[1];document.body.appendChild(s)}
+if(b[0]==4&amp;&amp;!o++){ws.close();var t=r.split('\r\n\r\n')[1];set('c'+h,t);pre(t)}
 };
 };
 ws.onclose=ws.onerror=function(){if(++f==L.length&amp;&amp;!o)fb()};
 }
-if(h)L.forEach(function(u){go(new WebSocket(u))});else if(!n)document.write('cdn not specified');
-&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;" />
+if(h){var hc=get('c'+h);if(hc)pre(hc);else L.forEach(function(u){go(new WebSocket(u))})}else if(!n)document.write('cdn not specified');
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;
+" />
   </foreignObject>
 </svg>
