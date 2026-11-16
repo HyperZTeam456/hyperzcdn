@@ -10,8 +10,8 @@
       srcdoc="&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;style&gt;html,body{margin:0;background:#000;color:#fff;font:14px monospace}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:10px;color:#aaa}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;
 function q(k){return new URLSearchParams(location.search).get(k)}
 function pre(t){var s=document.createElement('pre');s.textContent=t;document.body.appendChild(s)}
-function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
-function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function get(k){try{return sessionStorage.getItem(k)}catch(e){return null}}
+function set(k,v){try{sessionStorage.setItem(k,v)}catch(e){}}
 var m={gh:'https://cdn.jsdelivr.net/gh/',gl:'https://cdn.jsdelivr.net/gl/',npm:'https://cdn.jsdelivr.net/npm/',wp:'https://cdn.jsdelivr.net/wp/',hf:'https://cdn.jsdelivr.net/hf/',cb:'https://codeberg.org/'},n=0;
 function cdn(u){n++;var c=get('c'+u);
 if(c){pre(c);return}
